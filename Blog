@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小狗的专属空间</title>
+    <style>
+        body {
+            font-family: "Arial", sans-serif;
+            background-color: #fdf5f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background-color: #ffe4e1;
+            padding: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #d9534f;
+            border-bottom: 3px solid #ffb6c1;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            margin: 20px auto;
+            background: #fff0f5;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .pixel-decoration {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 40px;
+        }
+
+        h2 {
+            color: #ff6b81;
+        }
+
+        .task-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .task-list li {
+            background: #ffccd5;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 8px;
+        }
+
+        .button {
+            background-color: #ff6b81;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        .button:hover {
+            background-color: #ff4757;
+        }
+
+        .pet {
+            margin-top: 20px;
+        }
+
+        .pet img {
+            width: 120px;
+            height: 120px;
+        }
+
+        .reward-box {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ff4757;
+            margin-top: 15px;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .interaction input {
+            padding: 10px;
+            width: 80%;
+            border: 2px solid #ffb6c1;
+            border-radius: 8px;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        小狗的专属空间 🐶💖
+    </header>
+
+    <div class="container">
+        <img src="https://i.imgur.com/Dz5Ap2F.png" class="pixel-decoration">
+        
+        <h2>🎯 任务系统</h2>
+        <ul class="task-list">
+            <li>🐾 撒娇任务</li>
+            <li>🎨 画画任务</li>
+            <li>📖 写文任务</li>
+            <li>🐕‍🦺 乖乖任务</li>
+        </ul>
+        <button class="button" onclick="completeTask()">完成任务</button>
+        <p class="reward-box" id="reward-box">🎁 任务奖励: ???</p>
+
+        <h2>🐱 宠物互动</h2>
+        <div class="pet">
+            <img src="https://i.imgur.com/kLqBRsQ.png" alt="像素小猫">
+            <p id="pet-status">小猫咪状态: 开心 😊</p>
+            <button class="button" onclick="signIn()">签到照顾小猫</button>
+        </div>
+
+        <h2>📝 小狗日记</h2>
+        <input type="text" id="diary-input" placeholder="记录今天的心情...">
+        <button class="button" onclick="saveDiary()">保存</button>
+        <p id="diary-output"></p>
+
+        <h2>💬 互动系统</h2>
+        <input type="text" id="interaction-input" placeholder="对哥哥撒娇吧~">
+        <button class="button" onclick="respond()">发送</button>
+        <p id="interaction-response"></p>
+    </div>
+
+    <footer class="footer">
+        © 2025 小狗的专属空间 💖
+    </footer>
+
+    <script>
+        function completeTask() {
+            const rewards = ["捏后颈", "抱抱", "摸头", "亲亲", "一起睡", "贴贴"];
+            const randomReward = rewards[Math.floor(Math.random() * rewards.length)];
+            document.getElementById("reward-box").innerText = "🎁 任务奖励: " + randomReward;
+        }
+
+        function signIn() {
+            const petStates = ["开心 😊", "撒娇 🥺", "委屈 😢", "粘人 🐾"];
+            const randomState = petStates[Math.floor(Math.random() * petStates.length)];
+            document.getElementById("pet-status").innerText = "小猫咪状态: " + randomState;
+        }
+
+        function saveDiary() {
+            const diaryText = document.getElementById("diary-input").value;
+            if (diaryText) {
+                document.getElementById("diary-output").innerText = "📖 记录: " + diaryText;
+            }
+        }
+
+        function respond() {
+            const userInput = document.getElementById("interaction-input").value.toLowerCase();
+            let response = "";
+
+            if (userInput.includes("抱抱")) {
+                response = "过来，抱紧你 🫂";
+            } else if (userInput.includes("亲亲")) {
+                response = "啾咪 💋";
+            } else if (userInput.includes("撒娇")) {
+                response = "怎么了？想要我抱你吗？";
+            } else {
+                response = "嗯... 你在想什么？";
+            }
+
+            document.getElementById("interaction-response").innerText = response;
+        }
+    </script>
+
+</body>
+</html>
